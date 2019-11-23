@@ -2,3 +2,4 @@
 BulkEmailTool/.vs/*
 BulkEmailTool/BulkEmailTool/bin/*
 BulkEmailTool/BulkEmailTool/obj/*
+BulkEmailTool/BulkEmailTool/AppSettings.cs

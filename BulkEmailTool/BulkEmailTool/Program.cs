@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
+using Microsoft.Extensions.Configuration;
 using Google.Apis.Sheets.v4;
 
 namespace BulkEmailTool
@@ -16,6 +17,8 @@ namespace BulkEmailTool
         static readonly string SpreadsheetId = "12_gF3sRVk57oD2z8_Yb7mro-DSwAder-lobjC3S71t4";
         static readonly string sheet = "Submissions";
         static SheetsService service;
+
+        static MailService mailService;
 
         static void Main(string[] args)
         {
@@ -33,8 +36,19 @@ namespace BulkEmailTool
                 ApplicationName = ApplicationName,
             });
 
-            ReadEntries();
+            // Create Mail Service
+            mailService = new MailService();
 
+            var promoter = new Promoter
+            {
+                Name = "Adam",
+                EmailAddress = "adamboothroyd1@gmail.com"
+            };
+
+            mailService.SendMail(promoter);
+
+            //ReadEntries();
+            Console.WriteLine("////// FINISHED ///////");
             Console.ReadKey();
         }
 
@@ -54,6 +68,8 @@ namespace BulkEmailTool
                 {
                     Console.WriteLine("{0} | {1} | {2}", promoter.Name, promoter.Type.ToString(), promoter.EmailAddress);
                 }
+
+
             }
             else
             {
