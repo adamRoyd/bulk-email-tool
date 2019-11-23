@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
-using Microsoft.Extensions.Configuration;
 using Google.Apis.Sheets.v4;
 
 namespace BulkEmailTool
@@ -68,8 +67,6 @@ namespace BulkEmailTool
                 {
                     Console.WriteLine("{0} | {1} | {2}", promoter.Name, promoter.Type.ToString(), promoter.EmailAddress);
                 }
-
-
             }
             else
             {
